@@ -9,7 +9,6 @@ from pathlib import Path
 
 from PIL import Image, ImageOps, ImageEnhance
 
-
 app = Flask(__name__)
 
 # --- CONFIGURATION PATHS ---
@@ -32,7 +31,6 @@ print(f"Base Directory: {BASE_DIR}")
 print(f"Looking for Settings at: {SETTINGS_FILE} (Exists: {SETTINGS_FILE.exists()})")
 print(f"Looking for Image at: {IMAGE_PATH} (Exists: {IMAGE_PATH.exists()})")
 print(f"----------------------")
-
 
 #Get InkyPi Settings
 def get_inkypi_settings():
@@ -66,7 +64,6 @@ def get_inkypi_settings():
         except Exception:
             pass
 
-
     # 2) Fallback to main app config endpoint
     try:
         response = requests.get("http://127.0.0.1:5000/get_current_config", timeout=1)
@@ -77,7 +74,6 @@ def get_inkypi_settings():
 
     # 3) Final fallback
     return default_settings
-
 
 # --- Some HTML ---
 DASHBOARD_HTML = """
@@ -194,15 +190,11 @@ DASHBOARD_HTML = """
 </html>
 """
 
-
-
 # --- ROUTES ---
-
 
 @app.route('/get_current_config')
 def get_current_config():
     return jsonify(get_inkypi_settings())
-
 
 @app.route('/')
 def dashboard():
@@ -210,7 +202,6 @@ def dashboard():
         DASHBOARD_HTML,
         img_path=str(IMAGE_PATH)
     )
-
 
 @app.route('/image')
 def serve_image():
@@ -266,4 +257,3 @@ def serve_image():
 # Run on port 5010 or choose another port
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5010)
-
