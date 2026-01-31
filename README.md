@@ -3,7 +3,7 @@ E-Ink Display simulator for InkyPi developers
 ## Features
 - Simulates Spectra6 e-ink screen
 - InkyPi setings applied
-- Download simuated screenshot
+- Download simulated screenshot
 
 ## Installation
 Download and install in any InkyPi directory.  I have mine in the / utils directory
